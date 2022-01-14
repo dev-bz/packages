@@ -34,3 +34,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Play
+        run: |
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          export PATH="$PATH:$PWD/depot_tools"
+          fetch dart
+          cd sdk
+          ./tools/build.py --no-goma --mode release --arch arm64c create_sdk
